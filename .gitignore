@@ -16,6 +16,11 @@
 # Toolchain Folder
 toolchain/
 cwm-packer/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> d7ec027... merged 1st wave of commits to master branch
 
 # Hidden Files
 .*
@@ -57,3 +62,7 @@ kernel/scripts/mod/modpost
 kernel/usr/gen_init_cpio
 kernel/usr/initramfs_data.cpio
 
+<<<<<<< HEAD
+=======
+>>>>>>> test-commits
+>>>>>>> d7ec027... merged 1st wave of commits to master branch
