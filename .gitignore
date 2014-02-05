@@ -3,7 +3,8 @@
 *.lo
 *.o
 
-# Compiled Dynamic libraries
+# Compiled libs & Dynamic libraries
+*.ko
 *.so
 *.dylib
 
@@ -15,3 +16,44 @@
 # Extra Folders
 toolchain/
 cwm-packer/
+
+# Hidden Files
+.*
+
+#some other files not to be included
+*.order
+*.builtin
+*.mod.c
+*.symvers
+*.map
+*.S
+*.s
+*.*.c
+vmlinux
+vmlinux.*
+kernel/arch/arm/boot/Image
+kernel/arch/arm/boot/compressed/piggy.gzip
+kernel/arch/arm/boot/compressed/piggy.xzkern
+kernel/arch/arm/boot/zImage
+kernel/arch/arm/include/generated/
+kernel/include/config/
+kernel/include/generated/
+kernel/include/linux/version.h
+kernel/kernel/config_data.gz
+kernel/kernel/config_data.h
+kernel/kernel/timeconst.h
+kernel/lib/crc32table.h
+kernel/lib/gen_crc32table
+kernel/scripts/basic/fixdep
+kernel/scripts/bin2c
+kernel/scripts/genksyms/genksyms
+kernel/scripts/genksyms/parse.tab.h
+kernel/scripts/kallsyms
+kernel/scripts/kconfig/conf
+kernel/scripts/kconfig/mconf
+kernel/scripts/mod/elfconfig.h
+kernel/scripts/mod/mk_elfconfig
+kernel/scripts/mod/modpost
+kernel/usr/gen_init_cpio
+kernel/usr/initramfs_data.cpio
+
