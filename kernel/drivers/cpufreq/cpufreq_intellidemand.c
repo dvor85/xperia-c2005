@@ -45,13 +45,13 @@
  */
 
 #define DEF_FREQUENCY_DOWN_DIFFERENTIAL		(10)
-#define DEF_FREQUENCY_UP_THRESHOLD		(50)
+#define DEF_FREQUENCY_UP_THRESHOLD		(80)
 #define DEF_SAMPLING_DOWN_FACTOR		(5)
 #define BOOSTED_SAMPLING_DOWN_FACTOR		(10)
 #define MAX_SAMPLING_DOWN_FACTOR		(100000)
-#define MICRO_FREQUENCY_DOWN_DIFFERENTIAL	(5)
-#define MICRO_FREQUENCY_UP_THRESHOLD		(75)
-#define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(50000)
+#define MICRO_FREQUENCY_DOWN_DIFFERENTIAL	(20)
+#define MICRO_FREQUENCY_UP_THRESHOLD		(90)
+#define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(80000)
 #define MIN_FREQUENCY_UP_THRESHOLD		(30)
 #define MAX_FREQUENCY_UP_THRESHOLD		(75)
 #define MIN_FREQUENCY_DOWN_DIFFERENTIAL		(1)
@@ -59,8 +59,8 @@
 #define DEF_SAMPLING_RATE			(50000)
 #define BOOSTED_SAMPLING_RATE			(25000)
 #define DBS_INPUT_EVENT_MIN_FREQ		(384000)
-#define DBS_SYNC_FREQ				(594000)
-#define DBS_OPTIMAL_FREQ			(972000)
+#define DBS_SYNC_FREQ				(702000)
+#define DBS_OPTIMAL_FREQ			(594000)
 
 #ifdef CONFIG_CPUFREQ_ID_PERFLOCK
 #define DBS_PERFLOCK_MIN_FREQ			(162000)
@@ -180,19 +180,19 @@ static struct dbs_tuners {
 	unsigned int boostfreq;
 	unsigned int two_phase_freq;
 } dbs_tuners_ins = {
-	.up_threshold_multi_core = DEF_FREQUENCY_UP_THRESHOLD,
-	.up_threshold = 50,
+	.up_threshold_multi_core = 90,
+	.up_threshold = DEF_FREQUENCY_UP_THRESHOLD,
 	.sampling_down_factor = DEF_SAMPLING_DOWN_FACTOR,
 	.down_differential = DEF_FREQUENCY_DOWN_DIFFERENTIAL,
 	.down_differential_multi_core = MICRO_FREQUENCY_DOWN_DIFFERENTIAL,
-	.up_threshold_any_cpu_load = 50,
+	.up_threshold_any_cpu_load = 80,
 	.ignore_nice = 0,
 	.powersave_bias = 0,
 	.sync_freq = DBS_SYNC_FREQ,
 	.optimal_freq = DBS_OPTIMAL_FREQ,
 	.freq_boost_time = DEFAULT_FREQ_BOOST_TIME,
 	.boostfreq = 972000,
-	.two_phase_freq = 972000,
+	.two_phase_freq = 702000,
 };
 
 static inline cputime64_t get_cpu_idle_time_jiffy(unsigned int cpu,
