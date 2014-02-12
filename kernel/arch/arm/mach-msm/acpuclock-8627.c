@@ -97,8 +97,8 @@ static struct msm_bus_scale_pdata bus_scale_data __initdata = {
 };
 
 static struct l2_level l2_freq_tbl[] __initdata = {
-	[0] =  { { 162000,  PLL_8, 0, 0x0C }, LVL_LOW,  1050000, 1 },
-	[1] =  { { 270000,  PLL_8, 0, 0x14 }, LVL_LOW,  1050000, 1 },
+	[0] =  { { 162000,  HFPLL, 0, 0x0C }, LVL_LOW,  1050000, 1 },
+	[1] =  { { 270000,  HFPLL, 0, 0x14 }, LVL_LOW,  1050000, 1 },
 	[2] =  { { 384000,  PLL_8, 0, 0x00 }, LVL_LOW,  1050000, 1 },
     [3] =  { { 432000,  HFPLL, 2, 0x20 }, LVL_NOM,  1050000, 2 },
     [4] =  { { 486000,  HFPLL, 2, 0x24 }, LVL_NOM,  1050000, 2 },
@@ -120,8 +120,8 @@ static struct l2_level l2_freq_tbl[] __initdata = {
 
 /* TODO: Update core voltages when data is available. */
 static struct acpu_level acpu_freq_tbl[] __initdata = {
-	{ 1, { 162000,  PLL_8, 0, 0x0C }, L2(0),   900000 },
-	{ 1, { 270000,  PLL_8, 0, 0x14 }, L2(0),   925000 },
+	{ 1, { 162000,  HFPLL, 0, 0x0C }, L2(0),   900000 },
+	{ 1, { 270000,  HFPLL, 0, 0x14 }, L2(0),   925000 },
 	{ 1, { 384000,  PLL_8, 0, 0x00 }, L2(0),   950000 },
     { 0, { 432000,  HFPLL, 2, 0x20 }, L2(7),   975000 },
     { 1, { 486000,  HFPLL, 2, 0x24 }, L2(7),   975000 },
@@ -141,12 +141,10 @@ static struct acpu_level acpu_freq_tbl[] __initdata = {
     { 1, { 1242000, HFPLL, 1, 0x2E }, L2(17), 1200000 },
     { 0, { 1296000, HFPLL, 1, 0x30 }, L2(17), 1225000 },
     { 1, { 1350000, HFPLL, 1, 0x32 }, L2(17), 1225000 },
-    { 1, { 1404000, HFPLL, 1, 0x34 }, L2(17), 1237500 },
+    { 1, { 1404000, HFPLL, 1, 0x34 }, L2(17), 1250000 },
 	{ 1, { 1512000, HFPLL, 1, 0x38 }, L2(17), 1250000 },
-	{ 1, { 1674000, HFPLL, 1, 0x3E }, L2(17), 1250000 },
+	{ 1, { 1674000, HFPLL, 1, 0x3E }, L2(17), 1275000 },
 	{ 1, { 1728000, HFPLL, 1, 0x40 }, L2(17), 1275000 },
-	{ 1, { 1836000, HFPLL, 1, 0x44 }, L2(17), 1275000 },
-	{ 1, { 1944000, HFPLL, 1, 0x46 }, L2(17), 1300000 },
 	{ 0, { 0 } }
 };
 
