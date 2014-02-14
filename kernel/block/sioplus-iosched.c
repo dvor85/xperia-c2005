@@ -23,17 +23,18 @@
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/slab.h>
+#include <linux/version.h>
 
 enum { ASYNC, SYNC };
 
 /* Tunables */
-static const int sync_read_expire = (HZ / 16) * 5;	/* max time before a sync read is submitted. */
-static const int sync_write_expire = HZ * 3;	/* max time before a sync write is submitted. */
+static const int sync_read_expire = (HZ / 16) * 9;	/* max time before a sync read is submitted. */
+static const int sync_write_expire = (HZ / 2) * 5;	/* max time before a sync write is submitted. */
 
 static const int async_read_expire = HZ * 4;	/* ditto for async, these limits are SOFT! */
 static const int async_write_expire = HZ * 16;	/* ditto for async, these limits are SOFT! */
 
-static const int writes_starved = 2;		/* max times reads can starve a write */
+static const int writes_starved = 4;		/* max times reads can starve a write */
 static const int fifo_batch     = 1;		/* # of sequential requests treated as one
 						   by the above parameters. For throughput. */
 
@@ -86,6 +87,7 @@ sio_add_request(struct request_queue *q, struct request *rq)
 	list_add_tail(&rq->queuelist, &sd->fifo_list[sync][data_dir]);
 }
 
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,38)
 static int
 sio_queue_empty(struct request_queue *q)
 {
@@ -95,6 +97,7 @@ sio_queue_empty(struct request_queue *q)
 	return list_empty(&sd->fifo_list[SYNC][READ]) && list_empty(&sd->fifo_list[SYNC][WRITE]) &&
 	       list_empty(&sd->fifo_list[ASYNC][READ]) && list_empty(&sd->fifo_list[ASYNC][WRITE]);
 }
+#endif
 
 static struct request *
 sio_expired_request(struct sio_data *sd, int sync, int data_dir)
@@ -109,7 +112,7 @@ sio_expired_request(struct sio_data *sd, int sync, int data_dir)
 	rq = rq_entry_fifo(list->next);
 
 	/* Request has expired */
-	if (time_after(jiffies, rq_fifo_time(rq)))
+	if (time_after_eq(jiffies, rq_fifo_time(rq)))
 		return rq;
 
 	return NULL;
@@ -370,7 +373,9 @@ static struct elevator_type iosched_sioplus = {
 		.elevator_merge_req_fn		= sio_merged_requests,
 		.elevator_dispatch_fn		= sio_dispatch_requests,
 		.elevator_add_req_fn		= sio_add_request,
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,38)
 		.elevator_queue_empty_fn	= sio_queue_empty,
+#endif
 		.elevator_former_req_fn		= sio_former_request,
 		.elevator_latter_req_fn		= sio_latter_request,
 		.elevator_init_fn		= sio_init_queue,
