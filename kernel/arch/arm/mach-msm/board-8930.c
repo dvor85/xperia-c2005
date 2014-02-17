@@ -2396,7 +2396,7 @@ static struct i2c_board_info mxt_device_info_8930[] __initdata = {
 	},
 };
 
-/*»     Synaptics Thin Driver»  */
+/*Â»     Synaptics Thin DriverÂ»  */
 
 #define CLEARPAD3202_ADDR 0x20
 #define CLEARPAD3202_ATTEN_GPIO (11)
@@ -2704,7 +2704,7 @@ static struct platform_device msm_tsens_device = {
 static struct msm_thermal_data msm_thermal_pdata = {
 	.sensor_id = 9,
 	.poll_ms = 250,
-	.limit_temp_degC = 60,
+	.limit_temp_degC = 75,
 	.temp_hysteresis_degC = 10,
 	.freq_step = 2,
 };
