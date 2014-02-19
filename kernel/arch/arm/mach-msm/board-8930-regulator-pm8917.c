@@ -501,9 +501,9 @@ msm8930_pm8917_gpio_regulator_pdata[] __devinitdata = {
 /* SAW regulator constraints */
 struct regulator_init_data msm8930_pm8917_saw_regulator_core0_pdata =
 	/*	      ID  vreg_name	       min_uV   max_uV */
-	SAW_VREG_INIT(S5, "8917_s5",	       700000, 1350000);
+	SAW_VREG_INIT(S5, "8917_s5",	       850000, 1300000);
 struct regulator_init_data msm8930_pm8917_saw_regulator_core1_pdata =
-	SAW_VREG_INIT(S6, "8917_s6",	       700000, 1350000);
+	SAW_VREG_INIT(S6, "8917_s6",	       850000, 1300000);
 
 /* PM8917 regulator constraints */
 struct pm8xxx_regulator_platform_data
@@ -548,8 +548,8 @@ msm8930_rpm_regulator_init_data[] __devinitdata = {
 	/*	ID a_on pd ss min_uV   max_uV  supply sys_uA  freq  fm  ss_fm */
 	RPM_SMPS(S1, 1, 1, 0, 1300000, 1300000, NULL, 100000, 3p20, NONE, NONE),
 	RPM_SMPS(S2, 0, 1, 0, 1300000, 1300000, NULL,      0, 1p60, NONE, NONE),
-	RPM_SMPS(S3, 0, 1, 1,  500000, 1200000, NULL, 100000, 4p80, NONE, NONE),
-	RPM_SMPS(S4, 1, 1, 0, 1800000, 2000000, NULL, 100000, 1p60, NONE, NONE),
+	RPM_SMPS(S3, 0, 1, 1,  500000, 1150000, NULL, 100000, 4p80, NONE, NONE),
+	RPM_SMPS(S4, 1, 1, 0, 1800000, 1800000, NULL, 100000, 1p60, NONE, NONE),
 	RPM_SMPS(S7, 0, 1, 0, 1150000, 1150000, NULL, 100000, 3p20, AUTO, AUTO),
 	RPM_SMPS(S8, 1, 1, 1, 2050000, 2050000, NULL, 100000, 1p60, NONE, NONE),
 

@@ -221,13 +221,6 @@ struct sx150x_platform_data msm8930_sx150x_data[] = {
 #define MSM_ION_HEAP_NUM	1
 #endif
 
-#ifdef CONFIG_CPU_FREQ_GOV_BADASS_2_PHASE
-int set_two_phase_freq_badass(int cpufreq);
-#endif
-#ifdef CONFIG_CPU_FREQ_GOV_BADASS_3_PHASE
-int set_three_phase_freq_badass(int cpufreq);
-#endif
-
 #ifdef CONFIG_KERNEL_MSM_CONTIG_MEM_REGION
 static unsigned msm_contig_mem_size = MSM_CONTIG_MEM_SIZE;
 static int __init msm_contig_mem_size_setup(char *p)
@@ -2403,7 +2396,7 @@ static struct i2c_board_info mxt_device_info_8930[] __initdata = {
 	},
 };
 
-/*Â»     Synaptics Thin DriverÂ»  */
+/*»     Synaptics Thin Driver»  */
 
 #define CLEARPAD3202_ADDR 0x20
 #define CLEARPAD3202_ATTEN_GPIO (11)
@@ -2711,7 +2704,7 @@ static struct platform_device msm_tsens_device = {
 static struct msm_thermal_data msm_thermal_pdata = {
 	.sensor_id = 9,
 	.poll_ms = 250,
-	.limit_temp_degC = 75,
+	.limit_temp_degC = 60,
 	.temp_hysteresis_degC = 10,
 	.freq_step = 2,
 };
