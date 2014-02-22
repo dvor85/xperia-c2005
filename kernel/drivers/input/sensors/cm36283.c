@@ -433,7 +433,7 @@ static int get_stable_ps_adc_value(uint16_t *ps_adc)
 static void sensor_irq_do_work(struct work_struct *work)
 {
     struct cm36283_info *lpi = lp_info;
-    uint16_t intFlag;
+    uint16_t intFlag = 0;
     _cm36283_I2C_Read_Word(lpi->slave_addr, INT_FLAG, &intFlag);
     control_and_report(lpi, CONTROL_INT_ISR_REPORT, intFlag);  
      
@@ -790,7 +790,7 @@ static struct miscdevice lightsensor_misc = {
 static ssize_t ps_adc_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
 {
-    uint16_t value;
+    uint16_t value = 0;
     int ret;
     struct cm36283_info *lpi = dev_get_drvdata(dev);
     int intr_val;
@@ -809,7 +809,7 @@ static ssize_t ps_adc_show(struct device *dev,
 static ssize_t ps_value_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
 {
-    uint16_t value;
+    uint16_t value = 0;
     int ret,val;
     struct cm36283_info *lpi = dev_get_drvdata(dev);
     
@@ -1034,7 +1034,7 @@ static ssize_t ls_enable_store(struct device *dev,
 				   const char *buf, size_t count)
 {
     int ret = 0;
-    uint16_t intFlag;
+    uint16_t intFlag = 0;
     struct cm36283_info *lpi = dev_get_drvdata(dev);
 
 	unsigned ls_auto = simple_strtoul(buf, NULL, 16);
@@ -1411,7 +1411,7 @@ err_free_ps_input_device:
 static int initial_cm36283(struct cm36283_info *lpi)
 {
     int val, ret;
-    uint16_t idReg;
+    uint16_t idReg = 0;
     
     val = gpio_get_value(lpi->intr_pin);
     D("[PS][CM36283] %s, INTERRUPT GPIO val = %d\n", __func__, val);
