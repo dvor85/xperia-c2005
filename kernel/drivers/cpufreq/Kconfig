@@ -125,6 +125,22 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 	  loading your cpufreq low-level hardware driver, using the
 	  'interactive' governor for latency-sensitive workloads.
 
+config CPU_FREQ_DEFAULT_GOV_DYNAMIC_INTERACTIVE
+	bool "dynamic interactive"
+	select CPU_FREQ_GOV_DYNAMIC_INTERACTIVE
+	help
+	  Use the CPUFreq governor 'dyamic interactive' as default.
+
+config CPU_FREQ_DEFAULT_GOV_ADAPTIVE
+ 	bool "adaptive"
+ 	select CPU_FREQ_GOV_ADAPTIVE
+ 	help
+ 	  Use the CPUFreq governor 'adaptive' as default. This allows
+ 	  you to get a full dynamic cpu frequency capable system by simply
+ 	  loading your cpufreq low-level hardware driver, using the
+ 	  'adaptive' governor for latency-sensitive workloads and demanding
+ 	  performance.
+
 config CPU_FREQ_DEFAULT_GOV_BADASS
  	bool "badass"
  	select CPU_FREQ_GOV_BADASS
@@ -211,6 +227,19 @@ config CPU_FREQ_GOV_INTERACTIVE
 
 	  If in doubt, say N.
 
+config CPU_FREQ_GOV_DYNAMIC_INTERACTIVE
+	tristate "'dynamic interactive' cpufreq policy governor"
+	help
+	  'interactive' - This driver was made by spacecaker
+
+	  98% the same as Interactive, but it dynamically changes
+	  its parameters according to the load.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called cpufreq_interactive.
+
+	  If in doubt, say N.
+
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
 	depends on CPU_FREQ
@@ -233,6 +262,27 @@ config CPU_FREQ_GOV_CONSERVATIVE
 	  For details, take a look at linux/Documentation/cpu-freq.
 
 	  If in doubt, say N.
+
+config CPU_FREQ_GOV_ADAPTIVE
+ 	tristate "'adaptive' cpufreq policy governor"
+ 	help
+ 	  'adaptive' - This driver adds a dynamic cpufreq policy governor
+ 	  designed for latency-sensitive workloads and also for demanding
+ 	  performance.
+ 
+ 	  This governor attempts to reduce the latency of clock
+ 	  increases so that the system is more responsive to
+ 	  interactive workloads in loweset steady-state but to
+ 	  to reduce power consumption in middle operation level level up
+ 	  will be done in step by step to prohibit system from going to
+ 	  max operation level.
+ 
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called cpufreq_adaptive.
+ 
+ 	  For details, take a look at linux/Documentation/cpu-freq.
+ 
+ 	  If in doubt, say N.
 
 config CPU_FREQ_GOV_BADASS
  	tristate "'badass' cpufreq policy governor"
