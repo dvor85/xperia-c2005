@@ -160,7 +160,7 @@ static struct bds_tuners {
 	.two_phase_freq = 972000,
 #endif
 #ifdef CONFIG_CPU_FREQ_GOV_BADASS_3_PHASE
-	.three_phase_freq = 1404000,
+	.three_phase_freq = 1458000,
 #endif
 };
 

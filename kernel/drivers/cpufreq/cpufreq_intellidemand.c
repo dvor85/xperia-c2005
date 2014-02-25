@@ -191,7 +191,7 @@ static struct dbs_tuners {
 	.sync_freq = DBS_SYNC_FREQ,
 	.optimal_freq = DBS_OPTIMAL_FREQ,
 	.freq_boost_time = DEFAULT_FREQ_BOOST_TIME,
-	.boostfreq = 1404000,
+	.boostfreq = 1458000,
 	.two_phase_freq = 1242000,
 };
 
