@@ -60,7 +60,7 @@
 #define BOOSTED_SAMPLING_RATE			(25000)
 #define DBS_INPUT_EVENT_MIN_FREQ		(384000)
 #define DBS_SYNC_FREQ				(702000)
-#define DBS_OPTIMAL_FREQ			(594000)
+#define DBS_OPTIMAL_FREQ			(972000)
 
 #ifdef CONFIG_CPUFREQ_ID_PERFLOCK
 #define DBS_PERFLOCK_MIN_FREQ			(162000)
@@ -191,8 +191,8 @@ static struct dbs_tuners {
 	.sync_freq = DBS_SYNC_FREQ,
 	.optimal_freq = DBS_OPTIMAL_FREQ,
 	.freq_boost_time = DEFAULT_FREQ_BOOST_TIME,
-	.boostfreq = 972000,
-	.two_phase_freq = 702000,
+	.boostfreq = 1404000,
+	.two_phase_freq = 1242000,
 };
 
 static inline cputime64_t get_cpu_idle_time_jiffy(unsigned int cpu,
