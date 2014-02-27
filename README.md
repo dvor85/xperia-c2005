@@ -1,21 +1,22 @@
-xperia-c2005
-============
-HELLO WORLD
+Xperia-C2005 Neocore Hyberid Kernel
+============================================
+4.2 Kernel repo for the xperia m/m dual
 
-NEW REPO FOR 4.2 KERNEL FOR MY XPERIA M, YEY
-
+running on dual sim firmware
 ============================================
 BUILD INSTRUCTIONS
 ============================================
-cd kernel
-export ARCH=arm
-export CROSS_COMPILE=path/to/your/toolchain
+
+cd in to kernel directory
+
 make clean && make mrproper
-make c2005_defconfig
+
+make neocore_defconfig
+
 make
 
 ============================================
 		IRONBUANG SYSTEMS PRESENTS!!!
-			NEOCORE KERNEL 
-	FOR THE XPERIA M DUAL (C2004/C2005)
+			NEOCORE HYBRID KERNEL 
+	 FOR THE XPERIA M DUAL (C2004/C2005)
 
