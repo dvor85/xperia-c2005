@@ -29,6 +29,9 @@
 
 #include <asm/ioctls.h>
 
+static unsigned int enabled = 1;
+module_param(enabled, uint, S_IWUSR | S_IRUGO);
+
 /* FIH-SW3-KERNEL-TH-add_last_alog-00+[ */
 #ifdef CONFIG_FEATURE_FIH_SW3_LAST_ALOG
 #include "mach/alog_ram_console.h" 
@@ -473,6 +476,8 @@ ssize_t logger_aio_write(struct kiocb *iocb, const struct iovec *iov,
 	char sTag[6]; //MTD-KERNEL-BH-last_alog-01+
 #endif	
 /* FIH-SW3-KERNEL-TH-add_last_alog-00+] */
+	 if (!enabled)
+		return 0;
 
 	now = current_kernel_time();
 
